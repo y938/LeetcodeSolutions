@@ -1,12 +1,27 @@
 class Solution:
+    def countDigit(self, n):
+        """Return number of digits in 'n'"""
+        ans = 0
+        while n:
+            ans += 1
+            n //= 10
+        return ans
+    
     def countSymmetricIntegers(self, low: int, high: int) -> int:
-        count =0
+        ans = 0
         for i in range(low, high+1):
-            if len(str(i)) % 2 == 0:
-                mid = int(len(str(i))) // 2
-                s = str(i)
-                x = [int(j) for j in s[:mid]]
-                y = [int(j) for j in s[mid:len(str(i))]]
-                if sum(x)==sum(y):
-                    count +=1
-        return count
+            digits = self.countDigit(i)
+            if not digits & 1:  # if even number, else skip
+                temp_sum = 0
+                k = 0
+                while k != digits//2: # add digits in right half to temp_sum
+                    temp_sum += i % 10
+                    i //= 10
+                    k += 1
+                while k != digits: # subtract digits in left half from temp_sum
+                    temp_sum -= i % 10
+                    i //= 10
+                    k += 1
+                if temp_sum == 0: # if temp_sum == 0 then sum of digits in left and right halves are equal
+                    ans += 1
+        return ans
