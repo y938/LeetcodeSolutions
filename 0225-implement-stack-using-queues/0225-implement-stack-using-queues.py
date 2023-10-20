@@ -1,20 +1,20 @@
 class MyStack:
     def __init__(self):
-        self.stack = []
+        self.inbound_stack = []
 
     def push(self, x: int) -> None:
-        self.stack.append(x)
+        self.inbound_stack.append(x)
 
     def pop(self) -> int:
-        if self.stack:
-            return self.stack.pop()
+        if self.inbound_stack:
+            return self.inbound_stack.pop()
         return None
     def top(self) -> int:
-        if self.stack:
-            return self.stack[-1]
+        if self.inbound_stack:
+            return self.inbound_stack[-1]
         return None
     def empty(self) -> bool:
-        if self.stack:
+        if self.inbound_stack:
             return False
         return True
 
