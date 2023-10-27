@@ -5,12 +5,11 @@ class Codec:
         """
         global x
         x = longUrl
-        return "http://"+longUrl[-1:-8]+"4e9iAk"
+        return "https://tinyurl.com/"+str(len(longUrl))
 
     def decode(self, shortUrl: str) -> str:
         """Decodes a shortened URL to its original URL.
         """
-        
         return x
 
 # Your Codec object will be instantiated and called as such:
