@@ -11,13 +11,13 @@ class Solution:
         stk = []
         last = None
         for num in nums:
-            while stk and stk[-1].val < num:
+            while stk and stk[-1].val<num:
                 last = stk.pop()
             node = TreeNode(num)
-            if stk:
-                stk[-1].right = node 
             if last:
                 node.left = last
+            if stk:
+                stk[-1].right = node
             stk.append(node)
-            last = None
+            last=None
         return stk[0]
